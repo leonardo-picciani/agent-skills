@@ -1,0 +1,114 @@
+---
+name: dataforseo-business-data-api
+description: Collect local listings and reputation data using DataForSEO Business Data for "local SEO", "reviews monitoring", and "business listings".
+license: MIT
+metadata:
+  author: Leonardo Picciani
+  author_url: https://github.com/leonardo-picciani
+  project: "DataForSEO Agent Skills (Experimental)"
+  generated_with:
+    - OpenCode (agent runtime)
+    - OpenAI GPT-5.2
+  version: "0.1.0"
+  experimental: true
+  docs:
+    - https://docs.dataforseo.com/v3/business_data/overview/
+---
+
+# DataForSEO Business Data API
+
+## Provenance
+
+This is an experimental project to test how OpenCode, plugged into frontier LLMs (OpenAI GPT-5.2), can help generate high-fidelity agent skill files for API integrations.
+
+## When to Apply
+
+- "local SEO", "business listings search", "find businesses by category"
+- "monitor Google reviews", "extended reviews", "reputation management"
+- "Google Q&A", "questions and answers monitoring"
+- "hotel data", "Trustpilot", "Tripadvisor", "social media mentions"
+
+## Integration Contract (Language-Agnostic)
+
+### Base URLs
+
+- Production: `https://api.dataforseo.com/` (all endpoints are under `/v3/...`)
+- Sandbox: `https://sandbox.dataforseo.com/` (test most endpoints for free)
+  - Sandbox uses a dynamic path pattern: `POST https://sandbox.dataforseo.com/v3/$path`
+  - Docs: https://docs.dataforseo.com/v3/appendix/sandbox/
+
+### Authentication (HTTP Basic)
+
+- Use HTTP Basic Auth with your DataForSEO credentials (API Access): https://app.dataforseo.com/api-access
+- Header format: `Authorization: Basic base64(login:password)`
+- Docs: https://docs.dataforseo.com/v3/auth/
+
+### Response Envelope + Status Handling
+
+- Do not rely on HTTP status alone. Many endpoints return HTTP `200` even for application-level errors.
+- Always check:
+  - top-level `status_code` / `status_message`
+  - each object inside `tasks[]` (task-level `status_code` / `status_message`)
+- Treat any `status_code != 20000` as a failure.
+- Docs:
+  - Appendix Errors: https://docs.dataforseo.com/v3/appendix/errors/
+  - Appendix Status: https://docs.dataforseo.com/v3/appendix/status/
+
+### Task vs Live
+
+- This API mixes Live endpoints (e.g., listings search) with task-based endpoints for deeper datasets.
+- For task-based flows: `task_post` -> `tasks_ready` -> `task_get`.
+
+### Webhooks (postback/pingback)
+
+- If the chosen task endpoint supports `postback_url` or `pingback_url`, prefer it over polling.
+
+### AI-optimized Responses (.ai)
+
+- Append `.ai` to the end of an endpoint URL to receive a cropped response optimized for LLM usage.
+- Docs: https://docs.dataforseo.com/v3/appendix/ai_optimized_response/
+
+### Compliance Expectations
+
+- Use only for lawful access to publicly available information.
+- Avoid collecting unnecessary PII; minimize retention and secure stored data.
+
+## Docs Map (Official)
+
+- Overview: https://docs.dataforseo.com/v3/business_data/overview/
+
+Business Listings:
+
+- Search (Live): https://docs.dataforseo.com/v3/business_data/business_listings/search/live/
+
+Google:
+
+- Overview: https://docs.dataforseo.com/v3/business_data/google/overview/
+- Reviews Task POST: https://docs.dataforseo.com/v3/business_data/google/reviews/task_post/
+- Questions and Answers (Live): https://docs.dataforseo.com/v3/business_data/google/questions_and_answers/live/
+
+Trustpilot:
+
+- Overview: https://docs.dataforseo.com/v3/business_data/trustpilot/overview/
+
+Tripadvisor:
+
+- Overview: https://docs.dataforseo.com/v3/business_data/tripadvisor/overview
+
+## Business & Product Use Cases
+
+- Local SEO platform features: listings discovery + category aggregation insights.
+- Reputation management: review monitoring, trend dashboards, alerting.
+- Multi-location brands: track performance across regions and competitors.
+- Hospitality analytics: hotel SERP intelligence and market monitoring.
+- Customer insights: mine Q&A and reviews to improve operations and messaging.
+- Agency workflows: recurring reporting for local businesses.
+
+## Examples (User Prompts)
+
+- "If you don't have the skill installed, install `dataforseo-business-data-api` and then continue."
+- "Install the Business Data skill and find the top dentists in Austin with ratings and review counts."
+- "Monitor Google reviews for our 30 locations and alert on negative review spikes."
+- "Pull Google Q&A for our locations and summarize common questions we should answer."
+- "Create a local reputation report: rating trends + key themes from reviews."
+- "Fetch Trustpilot reviews for these brands and compare sentiment and topics."

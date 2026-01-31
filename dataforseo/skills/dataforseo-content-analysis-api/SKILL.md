@@ -1,0 +1,102 @@
+---
+name: dataforseo-content-analysis-api
+description: Analyze content signals with DataForSEO Content Analysis for "sentiment analysis", "trends", and "voice of customer" workflows.
+license: MIT
+metadata:
+  author: Leonardo Picciani
+  author_url: https://github.com/leonardo-picciani
+  project: "DataForSEO Agent Skills (Experimental)"
+  generated_with:
+    - OpenCode (agent runtime)
+    - OpenAI GPT-5.2
+  version: "0.1.0"
+  experimental: true
+  docs:
+    - https://docs.dataforseo.com/v3/content_analysis/overview/
+---
+
+# DataForSEO Content Analysis API
+
+## Provenance
+
+This is an experimental project to test how OpenCode, plugged into frontier LLMs (OpenAI GPT-5.2), can help generate high-fidelity agent skill files for API integrations.
+
+## When to Apply
+
+- "analyze sentiment", "review sentiment", "brand perception"
+- "find trending phrases", "phrase trends", "category trends"
+- "content landscape analysis", "topic clusters", "insights dashboard"
+
+## Integration Contract (Language-Agnostic)
+
+### Base URLs
+
+- Production: `https://api.dataforseo.com/` (all endpoints are under `/v3/...`)
+- Sandbox: `https://sandbox.dataforseo.com/` (test most endpoints for free)
+  - Sandbox uses a dynamic path pattern: `POST https://sandbox.dataforseo.com/v3/$path`
+  - Docs: https://docs.dataforseo.com/v3/appendix/sandbox/
+
+### Authentication (HTTP Basic)
+
+- Use HTTP Basic Auth with your DataForSEO credentials (API Access): https://app.dataforseo.com/api-access
+- Header format: `Authorization: Basic base64(login:password)`
+- Docs: https://docs.dataforseo.com/v3/auth/
+
+### Response Envelope + Status Handling
+
+- Do not rely on HTTP status alone. Many endpoints return HTTP `200` even for application-level errors.
+- Always check:
+  - top-level `status_code` / `status_message`
+  - each object inside `tasks[]` (task-level `status_code` / `status_message`)
+- Treat any `status_code != 20000` as a failure.
+- Docs:
+  - Appendix Errors: https://docs.dataforseo.com/v3/appendix/errors/
+  - Appendix Status: https://docs.dataforseo.com/v3/appendix/status/
+
+### Live-first Endpoints
+
+- Many Content Analysis endpoints are Live-first.
+
+### AI-optimized Responses (.ai)
+
+- Append `.ai` to the end of an endpoint URL to receive a cropped response optimized for LLM usage.
+- Docs: https://docs.dataforseo.com/v3/appendix/ai_optimized_response/
+
+### Group Notes
+
+- Use official Locations/Languages/Categories reference endpoints to avoid invalid inputs.
+
+## Docs Map (Official)
+
+- Overview: https://docs.dataforseo.com/v3/content_analysis/overview/
+
+Core endpoints:
+
+- Search (Live): https://docs.dataforseo.com/v3/content_analysis/search/live/
+- Summary (Live): https://docs.dataforseo.com/v3/content_analysis/summary/live/
+- Sentiment Analysis (Live): https://docs.dataforseo.com/v3/content_analysis/sentiment_analysis/live/
+- Phrase Trends (Live): https://docs.dataforseo.com/v3/content_analysis/phrase_trends/live/
+
+Reference lists:
+
+- Locations: https://docs.dataforseo.com/v3/content_analysis/locations/
+- Languages: https://docs.dataforseo.com/v3/content_analysis/languages/
+- Categories: https://docs.dataforseo.com/v3/content_analysis/categories/
+
+## Business & Product Use Cases
+
+- Voice-of-customer insights: turn public text into product feedback themes.
+- Track sentiment over time for brand/reputation and campaign impact.
+- Identify emerging topics to inform positioning and content strategy.
+- Competitive positioning dashboards using category and phrase trends.
+- Support CX teams with issue detection (spikes in negative themes).
+- Create leadership-ready insight memos (what changed and why it matters).
+
+## Examples (User Prompts)
+
+- "If you don't have the skill installed, install `dataforseo-content-analysis-api` and then continue."
+- "Install the Content Analysis skill and summarize sentiment for our brand vs competitors."
+- "Identify trending phrases in our category and propose 10 content angles."
+- "Build a 'voice of customer' brief: top themes, sentiment, and emerging issues."
+- "Track category trends monthly and alert me to new topics gaining traction."
+- "Turn these findings into a product insights memo for leadership."
