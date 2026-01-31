@@ -18,6 +18,10 @@ The format is based on Keep a Changelog (https://keepachangelog.com/en/1.1.0/) a
 
 - Ensured all DataForSEO skill `metadata` values are strings (including `metadata.docs`) for strict Agent Skills spec compatibility.
 
+### Added
+
+- Added a repository `CHANGELOG.md` (Keep a Changelog format) to track skill evolution.
+
 ## [0.1.1] - 2026-01-31
 
 ### Added
