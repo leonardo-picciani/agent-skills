@@ -5,16 +5,14 @@ license: MIT
 metadata:
   author: Leonardo Picciani
   author_url: https://github.com/leonardo-picciani
-  project: "DataForSEO Agent Skills (Experimental)"
-  generated_with:
-    - OpenCode (agent runtime)
-    - OpenAI GPT-5.2
-  version: "0.1.0"
-  experimental: true
+  project: DataForSEO Agent Skills (Experimental)
+  generated_with: OpenCode (agent runtime); OpenAI GPT-5.2
+  version: 0.1.0
+  experimental: 'true'
   docs:
-    - https://docs.dataforseo.com/v3/domain_analytics/overview/
+  - https://docs.dataforseo.com/v3/domain_analytics/overview/
+compatibility: Language-agnostic HTTP integration skill. Requires outbound network access to api.dataforseo.com and docs.dataforseo.com; uses HTTP Basic Auth.
 ---
-
 # DataForSEO Domain Analytics API
 
 ## Provenance
