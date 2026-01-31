@@ -9,8 +9,7 @@ metadata:
   generated_with: OpenCode (agent runtime); OpenAI GPT-5.2
   version: 0.1.0
   experimental: 'true'
-  docs:
-  - https://docs.dataforseo.com/v3/content_generation/overview/
+  docs: https://docs.dataforseo.com/v3/content_generation/overview/
 compatibility: Language-agnostic HTTP integration skill. Requires outbound network access to api.dataforseo.com and docs.dataforseo.com; uses HTTP Basic Auth.
 ---
 # DataForSEO Content Generation API
