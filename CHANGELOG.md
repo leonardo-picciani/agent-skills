@@ -6,6 +6,10 @@ The format is based on Keep a Changelog (https://keepachangelog.com/en/1.1.0/) a
 
 ## [Unreleased]
 
+### Added
+
+- Added a standard `Steps`, `Inputs Checklist`, and language-agnostic `Example (cURL)` section to all DataForSEO skills.
+
 ### Fixed
 
 - Ensured all DataForSEO skill `metadata` values are strings (including `metadata.docs`) for strict Agent Skills spec compatibility.
