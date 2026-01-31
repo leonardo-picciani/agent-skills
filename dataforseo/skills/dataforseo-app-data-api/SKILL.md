@@ -65,6 +65,49 @@ This is an experimental project to test how OpenCode, plugged into frontier LLMs
 - Append `.ai` to the end of an endpoint URL to receive a cropped response optimized for LLM usage.
 - Docs: https://docs.dataforseo.com/v3/appendix/ai_optimized_response/
 
+## Steps
+
+1) Identify the exact endpoint(s) in the official docs for this use case.
+2) Choose execution mode:
+   - Live (single request) for interactive queries
+   - Task-based (post + poll/webhook) for scheduled or high-volume jobs
+3) Build the HTTP request:
+   - Base URL: `https://api.dataforseo.com/`
+   - Auth: HTTP Basic (`Authorization: Basic base64(login:password)`) from https://docs.dataforseo.com/v3/auth/
+   - JSON body exactly as specified in the endpoint docs
+4) Execute and validate the response:
+   - Check top-level `status_code` and each `tasks[]` item status
+   - Treat any `status_code != 20000` as a failure; surface `status_message`
+5) For task-based endpoints:
+   - Store `tasks[].id`
+   - Poll `tasks_ready` then fetch results with `task_get` (or use `postback_url`/`pingback_url` if supported)
+6) Return results:
+   - Provide a normalized summary for the user
+   - Include the raw response payload for debugging
+
+## Inputs Checklist
+
+- Credentials: DataForSEO API login + password (HTTP Basic Auth)
+- Target: keyword(s) / domain(s) / URL(s) / query string (depends on endpoint)
+- Targeting (if applicable): location + language, device, depth/limit
+- Time window (if applicable): date range, trend period, historical flags
+- Output preference: regular vs advanced vs html (if the endpoint supports it)
+
+## Example (cURL)
+
+```bash
+curl -u "${DATAFORSEO_LOGIN}:${DATAFORSEO_PASSWORD}"   -H "Content-Type: application/json"   -X POST "https://api.dataforseo.com/v3/<group>/<path>/live"   -d '[
+    {
+      "<param>": "<value>"
+    }
+  ]'
+```
+
+Notes:
+- Replace `<group>/<path>` with the exact endpoint path from the official docs.
+- For task-based flows, use the corresponding `task_post`, `tasks_ready`, and `task_get` endpoints.
+
+
 ## Docs Map (Official)
 
 - Overview: https://docs.dataforseo.com/v3/app_data/overview/
