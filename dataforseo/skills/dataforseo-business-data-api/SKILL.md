@@ -27,49 +27,18 @@ This is an experimental project to test how OpenCode, plugged into frontier LLMs
 
 ## Integration Contract (Language-Agnostic)
 
-### Base URLs
+See `references/REFERENCE.md` for the shared DataForSEO integration contract (auth, status handling, task lifecycle, sandbox, and .ai responses).
 
-- Production: `https://api.dataforseo.com/` (all endpoints are under `/v3/...`)
-- Sandbox: `https://sandbox.dataforseo.com/` (test most endpoints for free)
-  - Sandbox uses a dynamic path pattern: `POST https://sandbox.dataforseo.com/v3/$path`
-  - Docs: https://docs.dataforseo.com/v3/appendix/sandbox/
-
-### Authentication (HTTP Basic)
-
-- Use HTTP Basic Auth with your DataForSEO credentials (API Access): https://app.dataforseo.com/api-access
-- Header format: `Authorization: Basic base64(login:password)`
-- Docs: https://docs.dataforseo.com/v3/auth/
-
-### Response Envelope + Status Handling
-
-- Do not rely on HTTP status alone. Many endpoints return HTTP `200` even for application-level errors.
-- Always check:
-  - top-level `status_code` / `status_message`
-  - each object inside `tasks[]` (task-level `status_code` / `status_message`)
-- Treat any `status_code != 20000` as a failure.
-- Docs:
-  - Appendix Errors: https://docs.dataforseo.com/v3/appendix/errors/
-  - Appendix Status: https://docs.dataforseo.com/v3/appendix/status/
 
 ### Task vs Live
 
 - This API mixes Live endpoints (e.g., listings search) with task-based endpoints for deeper datasets.
 - For task-based flows: `task_post` -> `tasks_ready` -> `task_get`.
 
-### Webhooks (postback/pingback)
-
-- If the chosen task endpoint supports `postback_url` or `pingback_url`, prefer it over polling.
-
-### AI-optimized Responses (.ai)
-
-- Append `.ai` to the end of an endpoint URL to receive a cropped response optimized for LLM usage.
-- Docs: https://docs.dataforseo.com/v3/appendix/ai_optimized_response/
-
 ### Compliance Expectations
 
 - Use only for lawful access to publicly available information.
 - Avoid collecting unnecessary PII; minimize retention and secure stored data.
-
 ## Steps
 
 1) Identify the exact endpoint(s) in the official docs for this use case.

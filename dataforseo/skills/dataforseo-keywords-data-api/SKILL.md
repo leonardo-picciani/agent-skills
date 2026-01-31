@@ -27,54 +27,12 @@ This is an experimental project to test how OpenCode, plugged into frontier LLMs
 
 ## Integration Contract (Language-Agnostic)
 
-### Base URLs
+See `references/REFERENCE.md` for the shared DataForSEO integration contract (auth, status handling, task lifecycle, sandbox, and .ai responses).
 
-- Production: `https://api.dataforseo.com/` (all endpoints are under `/v3/...`)
-- Sandbox: `https://sandbox.dataforseo.com/` (test most endpoints for free)
-  - Sandbox uses a dynamic path pattern: `POST https://sandbox.dataforseo.com/v3/$path`
-  - Docs: https://docs.dataforseo.com/v3/appendix/sandbox/
-
-### Authentication (HTTP Basic)
-
-- Use HTTP Basic Auth with your DataForSEO credentials (API Access): https://app.dataforseo.com/api-access
-- Header format: `Authorization: Basic base64(login:password)`
-- Docs: https://docs.dataforseo.com/v3/auth/
-
-### Response Envelope + Status Handling
-
-- Do not rely on HTTP status alone. Many endpoints return HTTP `200` even for application-level errors.
-- Always check:
-  - top-level `status_code` / `status_message`
-  - each object inside `tasks[]` (task-level `status_code` / `status_message`)
-- Treat any `status_code != 20000` as a failure.
-- Docs:
-  - Appendix Errors: https://docs.dataforseo.com/v3/appendix/errors/
-  - Appendix Status: https://docs.dataforseo.com/v3/appendix/status/
-
-### Live vs Task-based Endpoints
-
-- Live endpoints return results in a single call (synchronous).
-- Task-based endpoints typically follow: `task_post` -> poll `tasks_ready` -> fetch via `task_get`.
-- If you use Task-based endpoints:
-  - store `tasks[].id`
-  - fetch results via `task_get`
-  - optionally use `postback_url`/`pingback_url` to avoid polling
-
-### Webhooks (postback/pingback)
-
-- Many task endpoints support `postback_url` and/or `pingback_url`.
-- Treat callbacks as signals; fetch final data via `task_get`.
-
-### AI-optimized Responses (.ai)
-
-- Append `.ai` to the end of an endpoint URL to receive a cropped response optimized for LLM usage.
-- Example: `.../v3/keywords_data/google_ads/search_volume/live.ai`
-- Docs: https://docs.dataforseo.com/v3/appendix/ai_optimized_response/
 
 ### Group Notes
 
 - Many keyword endpoints support both Live and Task-based flows; task-based is often used for bulk/scheduled jobs.
-
 ## Steps
 
 1) Identify the exact endpoint(s) in the official docs for this use case.
