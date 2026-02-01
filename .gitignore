@@ -1,5 +1,6 @@
 .DS_Store
 node_modules/
+.agents/
 .opencode/
 .venv-skills-ref/
 .tmp-skills-ref/
