@@ -1,97 +1,36 @@
-# agent-skills
+# agent-skills (deprecated)
 
-Experimental agent skills for coding agents.
+This repository is no longer the canonical source for my published skills.
 
-Author: Leonardo Picciani (https://github.com/leonardo-picciani)
+Skills have been split by domain/technology into dedicated repositories so https://skills.sh shows clean repo pages.
 
-Tooling (experimental): OpenCode + OpenAI GPT-5.2
+## Canonical skill repositories
 
-This repository is structured to work well with the Skills CLI (`npx skills`) and to be renderable/listable on https://skills.sh/.
+### DataForSEO
 
----
-
-## English
-
-### What is this?
-
-This repo is a multi-skill bundle. Each installable skill lives at `skills/<skill-name>/SKILL.md`.
-
-### Install
-
-List all available skills in this repo:
+- Repo: https://github.com/leonardo-picciani/dataforseo-agent-skills
+- skills.sh: https://skills.sh/leonardo-picciani/dataforseo-agent-skills
+- Install:
 
 ```bash
-npx skills add leonardo-picciani/agent-skills --list
+npx skills add leonardo-picciani/dataforseo-agent-skills --list
+npx skills add leonardo-picciani/dataforseo-agent-skills --skill dataforseo-serp-api
 ```
 
-Install a specific skill by name:
+### Senior ERP
+
+- Repo: https://github.com/leonardo-picciani/senior-erp-agent-skills
+- skills.sh: https://skills.sh/leonardo-picciani/senior-erp-agent-skills
+- Install:
 
 ```bash
-npx skills add leonardo-picciani/agent-skills --skill dataforseo-serp-api
+npx skills add leonardo-picciani/senior-erp-agent-skills --list
+npx skills add leonardo-picciani/senior-erp-agent-skills --skill senior-erp-cliente-upsert
 ```
 
-Tip: you can also list skills from your local clone:
+## Migration
 
-```bash
-npx skills add . --list
-```
-
-### Bundles
-
-- `skills/` - installable skills (each `skills/<name>/SKILL.md`)
-- `dataforseo/` - DataForSEO bundle notes/docs
-- `senior/` - Senior (Brazilian ERP) bundle notes/docs
-
-### Available Skills (high level)
-
-DataForSEO (EN): 12 API integration skills (SERP, Backlinks, OnPage, etc.). See `dataforseo/README.md`.
-
-Senior (pt-BR): ERP integration starter set (v0.1). See `senior/README.md`.
-
-### Conventions
-
-- Agent Skills format: each skill is a folder that contains at least `SKILL.md`.
-- `SKILL.md` uses YAML frontmatter (`name`, `description`) + Markdown body.
-- Skills should follow progressive disclosure: keep `SKILL.md` lean and move details into `references/`.
-
----
-
-## Portugues (Brasil)
-
-### O que e isto?
-
-Este repositorio e um bundle com varias skills. Cada skill instalavel fica em `skills/<nome-da-skill>/SKILL.md`.
-
-### Instalar
-
-Listar todas as skills disponiveis neste repo:
-
-```bash
-npx skills add leonardo-picciani/agent-skills --list
-```
-
-Instalar uma skill especifica pelo nome:
-
-```bash
-npx skills add leonardo-picciani/agent-skills --skill senior-erp-cliente-upsert
-```
-
-Dica: voce tambem pode listar as skills a partir de um clone local:
-
-```bash
-npx skills add . --list
-```
-
-### Bundles
-
-- `skills/` - skills instalaveis (cada `skills/<name>/SKILL.md`)
-- `dataforseo/` - notas/documentacao do bundle DataForSEO
-- `senior/` - notas/documentacao do bundle Senior (ERP brasileiro)
-
-### Skills disponiveis (visao geral)
-
-- DataForSEO (EN): 12 skills de integracao de API (SERP, Backlinks, OnPage, etc.). Veja `dataforseo/README.md`.
-- Senior (pt-BR): conjunto inicial (v0.1) de integracao com ERP Senior. Veja `senior/README.md`.
+If you previously installed from `leonardo-picciani/agent-skills`, reinstall from the repos above.
 
 ## License
 
