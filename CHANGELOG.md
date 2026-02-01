@@ -6,6 +6,10 @@ The format is based on Keep a Changelog (https://keepachangelog.com/en/1.1.0/) a
 
 ## [Unreleased]
 
+### Changed
+
+- Restructured repository to use the standard `skills/<skill>/SKILL.md` layout so skills.sh can render owner/repo skill tables.
+
 ### Added
 
 - Added a standard `Steps`, `Inputs Checklist`, and language-agnostic `Example (cURL)` section to all DataForSEO skills.

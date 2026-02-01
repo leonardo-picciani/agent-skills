@@ -1,10 +1,12 @@
 # DataForSEO Agent Skills (Experimental)
 
-This folder is a DataForSEO bundle inside the central `agent-skills` repository.
+This folder contains notes/docs for the DataForSEO bundle inside the central `agent-skills` repository.
 
-Repo: https://github.com/leonardo-picciani/agent-skills/tree/main/dataforseo
+Repo: https://github.com/leonardo-picciani/agent-skills
 
 It contains 12 separate, installable skill files for building language-agnostic integrations with the DataForSEO API v3.
+
+Skill sources live at: `skills/`
 
 Author: Leonardo Picciani (https://github.com/leonardo-picciani)
 
@@ -17,26 +19,20 @@ This is a multi-skill bundle: users should install only the skill(s) they need.
 Option A (recommended, install by skill name):
 
 ```bash
-npx skills add https://github.com/leonardo-picciani/agent-skills/tree/main/dataforseo --skill dataforseo-serp-api
+npx skills add leonardo-picciani/agent-skills --skill dataforseo-serp-api
 ```
 
 Example:
 
 ```bash
-npx skills add https://github.com/leonardo-picciani/agent-skills/tree/main/dataforseo --list
-npx skills add https://github.com/leonardo-picciani/agent-skills/tree/main/dataforseo --skill dataforseo-serp-api
-```
-
-Option B (install by direct path):
-
-```bash
-npx skills add https://github.com/leonardo-picciani/agent-skills/tree/main/dataforseo/skills/dataforseo-serp-api
+npx skills add leonardo-picciani/agent-skills --list
+npx skills add leonardo-picciani/agent-skills --skill dataforseo-serp-api
 ```
 
 Tip: you can list available skills without installing:
 
 ```bash
-npx skills add https://github.com/leonardo-picciani/agent-skills/tree/main/dataforseo --list
+npx skills add leonardo-picciani/agent-skills --list
 ```
 
 ## Skills

@@ -1,6 +1,6 @@
 # agent-skills
 
-Experimental skills bundles for coding agents.
+Experimental agent skills for coding agents.
 
 Author: Leonardo Picciani (https://github.com/leonardo-picciani)
 
@@ -8,7 +8,9 @@ Tooling (experimental): OpenCode + OpenAI GPT-5.2
 
 ## Bundles
 
-- `dataforseo/` - DataForSEO API v3 integration skills
+- `skills/` - installable skills (each `skills/<name>/SKILL.md`)
+- `dataforseo/` - DataForSEO bundle notes/docs
+- `senior/` - Senior (Brazilian ERP) bundle notes/docs
 
 ## Install
 
@@ -18,10 +20,10 @@ List available skills in this repo:
 npx skills add leonardo-picciani/agent-skills --list
 ```
 
-Install only the DataForSEO bundle:
+Install a specific skill:
 
 ```bash
-npx skills add https://github.com/leonardo-picciani/agent-skills/tree/main/dataforseo --list
+npx skills add leonardo-picciani/agent-skills --skill dataforseo-serp-api
 ```
 
 ## License
