@@ -6,16 +6,21 @@ The format is based on Keep a Changelog (https://keepachangelog.com/en/1.1.0/) a
 
 ## [Unreleased]
 
-### Changed
-
-- Restructured repository to use the standard `skills/<skill>/SKILL.md` layout so skills.sh can render owner/repo skill tables.
-
 ### Added
 
 - Added a standard `Steps`, `Inputs Checklist`, and language-agnostic `Example (cURL)` section to all DataForSEO skills.
+- Added the initial Senior (Brazilian ERP) bundle (v0.1) with 5 installable skills:
+  - `senior-erp-cliente-upsert`
+  - `senior-erp-pedido-venda-criar`
+  - `senior-erp-pedido-venda-consultar-status`
+  - `senior-erp-estoque-consultar-disponibilidade`
+  - `senior-erp-titulos-consultar`
+- Added `references/REFERENCE.md` (pt-BR) to each Senior skill with X Platform auth/headers/security/reliability conventions.
+- Updated `senior/README.md` to document the Senior v0.1 skills list and install commands.
 
 ### Changed
 
+- Restructured repository to use the standard `skills/<skill>/SKILL.md` layout so skills.sh can render owner/repo skill tables.
 - Added `references/REFERENCE.md` to each DataForSEO skill and slimmed `SKILL.md` to better follow the progressive disclosure best practice.
 
 ### Fixed

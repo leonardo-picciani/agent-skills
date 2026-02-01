@@ -1,19 +1,27 @@
 # Senior Agent Skills (Experimental)
 
-This folder contains notes/docs for a future Senior (Brazilian ERP) bundle inside the central `agent-skills` repository.
+Esta pasta contem notas/documentacao do bundle Senior (ERP brasileiro) dentro do repositorio `agent-skills`.
 
-Installable skills live at: `skills/`
+Skills instalaveis vivem em: `skills/`
 
-## Install
+## Skills (v0.1)
 
-List available skills in this repo:
+- `senior-erp-cliente-upsert`
+- `senior-erp-pedido-venda-criar`
+- `senior-erp-pedido-venda-consultar-status`
+- `senior-erp-estoque-consultar-disponibilidade`
+- `senior-erp-titulos-consultar`
+
+## Instalar
+
+Listar skills disponiveis neste repo:
 
 ```bash
 npx skills add leonardo-picciani/agent-skills --list
 ```
 
-Install a specific skill:
+Instalar uma skill especifica:
 
 ```bash
-npx skills add leonardo-picciani/agent-skills --skill <skill-name>
+npx skills add leonardo-picciani/agent-skills --skill senior-erp-cliente-upsert
 ```
